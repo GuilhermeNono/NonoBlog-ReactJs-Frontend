@@ -5,6 +5,7 @@ import './Auth.css';
 //Redux
 import {register, reset} from '../../slices/authSlice'
 import { useDispatch, useSelector } from 'react-redux';
+import Message from '../../components/Message';
 
 
 const Register = () => {
@@ -64,7 +65,8 @@ const Register = () => {
           onChange={(e) => setConfirmPassword(e.target.value)}
           value={confirmPassword}
         />
-        <input type="submit" value="Cadastrar" />
+       {!loading ? <input type="submit" value="Cadastrar" /> : <input type="submit" value="Aguarde" disabled/>}
+       {error && <Message msg={error} type="error"/>}
       </form>
 
       <p>
